@@ -11,7 +11,7 @@
  * @internal    @events OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender
  * @internal    @installset base
  * @internal    @modx_category Dashboard
- * @internal    @properties  &WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= Retrieve n° comments:;string;10 &trunc= Trunc text:;string;120  
+ * @internal    @properties  &WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= Retrieve n comments:;string;10 &trunc= Trunc text:;string;120
  */
 
 /**
@@ -20,7 +20,7 @@
  *
  * Dashboard latest comments widget plugin for EvoDashboard
  * Event: OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender
-&WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= Retrieve n° comments:;string;10 &trunc= Trunc text:;string;120
+&WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= Retrieve n comments:;string;10 &trunc= Trunc text:;string;120
 ****
 */
 // Run the main code
