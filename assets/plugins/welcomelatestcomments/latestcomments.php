@@ -6,7 +6,7 @@
  * Dashboard latest comments widget plugin for EvoDashboard
  *
  * Event: OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender
-&WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= retrieve n comments:;string;10 &trunc= Trunc text:;string;120
+&WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= retrieve n° comments:;string;10 &trunc= Trunc text:;string;120
 ****
 */
 
@@ -37,12 +37,12 @@ $truncSym = isset($truncSym) && $truncSym ? $truncSym : '...';
 
 
 $tplComment = "
-<tr><td class='span5'><b class='text-success'>[+jcf_name+]</b> <p class='text-warning'> [+createdon+] </p></td>
+<tr><td><b class='text-success'>[+jcf_name+]</b> <p class='text-warning'> [+createdon+] </p></td>
     <td>[+content+]</td>
     <td>[+doc_pagetitle+] </td>
 
-	<td><a href='../index.php?id=[+doc_id+]' target='_blank'><i class='icon-custom icon-no-border fa fa-eye icon-color-light-green icon-no-border'></i></a> </td>
-	<td><a href='index.php?a=27&id=[+doc_id+]' title='edit'> <i class='icon-custom fa fa-pencil-square-o icon-color-red icon-no-border'></i></a></td>
+	<td><a href='../index.php?id=[+doc_id+]' data-toggle='tooltip' title='Preview' target='_blank'><i class='icon-custom icon-no-border fa fa-eye icon-color-light-green icon-no-border'></i></a> </td>
+	<td><a href='index.php?a=27&id=[+doc_id+]' data-toggle='tooltip' title='Edit'> <i class='icon-custom fa fa-pencil-square-o icon-color-red icon-no-border'></i></a></td>
 
 	</tr>";
 
@@ -139,7 +139,7 @@ if (($result = mysql_query($query)) && mysql_num_rows($result)) {
 
 $WidgetOutput = '<div class="'.$WidgetBoxWidth.'"><div class="widget-wrapper"> <div class="widget-title sectionHeader"><i class="fa fa-comments"></i>
  '.$WidgetTitle.'</div>
-<div class="widget-stage sectionBody overflowscroll"><div class="table-responsive"> <table class="table-striped table-bordered">'.$commentsoutput.'</table></div></div></div></div>';
+<div class="widget-stage sectionBody overflowscroll"><div class="table-responsive"> <table class="table-striped table-bordered"'.$commentsoutput.'</table></div></div></div></div>';
 }
 //end Widget
 $output = $WidgetOutput;
