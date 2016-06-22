@@ -1,27 +1,29 @@
 <?php
 /**
- * WelcomeLatestComments RC 1.0
+ * WelcomeLatestComments RC 3.0
  * author Nicola Lambathakis http://www.tattoocms.it/
  *
  * Dashboard latest comments widget plugin for EvoDashboard
  *
  * Event: OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender
-&WidgetEvoEvent= Widget Box placement:;list;OnManagerWelcomePrerender,OnManagerWelcomeHome,OnManagerWelcomeRender;OnManagerWelcomePrerender &WidgetBoxSize= Widget size:;list;dashboard-block-full,dashboard-block-half;dashboard-block-half &WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= retrieve n° comments:;string;10 &trunc= Trunc text:;string;120
+&WidgetTitle= Widget Title:;string;Latest Comments &parents= Parent folders:;string;0 &count= retrieve nÂ° comments:;string;10 &trunc= Trunc text:;string;120 &datarow=widget row position:;list;1,2,3,4,5,6,7,8,9,10;1 &datacol=widget col position:;list;1,2,3,4;1 &datasizex=widget x size:;list;1,2,3,4;4 &datasizey=widget y size:;list;1,2,3,4,5,6,7,8,9,10;2
 ****
 */
 
-//blocks
+//widget name
+$WidgetID = isset($WidgetID) ? $WidgetID : 'CommentsBox';
+// size and position
+$datarow = isset($datarow) ? $datarow : '1';
+$datacol = isset($datacol) ? $datacol : '2';
+$datasizex = isset($datasizex) ? $datasizex : '2';
+$datasizey = isset($datasizey) ? $datasizey : '2';
+//output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
 //events
-$WidgetEvoEvent = isset($WidgetEvoEvent) ? $WidgetEvoEvent : 'OnManagerWelcomePreRender';
-// box size
-$WidgetBoxSize = isset($WidgetBoxSize) ? $WidgetBoxSize : 'dashboard-block-full';
-//widget grid size
-if ($WidgetBoxSize == 'dashboard-block-full') {
-$WidgetBoxWidth = 'col-sm-12';
-} else {
-$WidgetBoxWidth = 'col-sm-6';
-};
+$EvoEvent = isset($EvoEvent) ? $EvoEvent : 'OnManagerWelcomeHome';
+$output = "";
+$e = &$modx->Event;
+
 
 
 /**************************************************************latest comment snippet*/
@@ -88,7 +90,7 @@ $query = "SELECT " .
 # start rendering output
 $output = "";
 $e = &$modx->Event;
-if($e->name == ''.$WidgetEvoEvent.'') {
+if($e->name == ''.$EvoEvent.'') {
 
 if (($result = mysql_query($query)) && mysql_num_rows($result)) {
     while ($row = mysql_fetch_assoc($result)) {
@@ -137,9 +139,26 @@ if (($result = mysql_query($query)) && mysql_num_rows($result)) {
 
 /*Widget Box */
 
-$WidgetOutput = '<div class="'.$WidgetBoxWidth.'"><div class="widget-wrapper"> <div class="widget-title sectionHeader"><i class="fa fa-comments"></i>
- '.$WidgetTitle.'</div>
-<div class="widget-stage sectionBody overflowscroll"><div class="table-responsive"> <table class="table-striped table-bordered">'.$commentsoutput.'</table></div></div></div></div>';
+$WidgetOutput = '
+<li id="'.$WidgetID.'" data-row="'.$datarow.'" data-col="'.$datacol.'" data-sizex="'.$datasizex.'" data-sizey="'.$datasizey.'">
+                    <div class="panel panel-default widget-wrapper">
+                      <div class="panel-headingx widget-title sectionHeader clearfix">
+                          <span class="pull-left"><i class="fa fa-link"></i> '.$WidgetTitle.'</span>
+                            <div class="widget-controls pull-right">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-default btn-xs panel-hide hide-full glyphicon glyphicon-minus" data-id="'.$WidgetID.'"></a>
+                                </div>     
+                            </div>
+
+                      </div>
+                      <div class="panel-body widget-stage sectionBody">
+                       <div class="table-responsive"> <table class="table-striped table-bordered">'.$commentsoutput.'</table>
+                      </div>
+                    </div>           
+                </li>
+
+';
+
 }
 //end Widget
 $output = $WidgetOutput;
